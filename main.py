@@ -51,13 +51,12 @@ HELP_TEXT = """**Hey, Follow these steps:**
 /about - For more about me
 /status - For bot status
 
-Made by @FayasNoushad"""
+Made by @LA2IZ"""
 
 ABOUT_TEXT = """--**About Me**-- 😎
 
 🤖 **Name :** [Country Info](https://telegram.me/{})
-👨‍💻 **Developer :** [Fayas](https://github.com/la2iz)
-📢 **Channel :** [Fayas Noushad](https://telegram.me/llz3z)
+📢 **Channel :** [unbelievable](https://telegram.me/llz3z)
 📝 **Language :** [Python3](https://python.org)
 🧰 **Framework :** [Pyrogram](https://pyrogram.org)
 📡 **Server :** [Heroku](https://heroku.com)"""
