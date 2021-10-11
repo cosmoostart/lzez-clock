@@ -22,11 +22,10 @@ UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
 BOT_OWNER = int(os.environ["BOT_OWNER"])
 DATABASE_URL = os.environ["DATABASE_URL"]
 db = Database(DATABASE_URL, "FnCountryInfoBot")
-broadcast_ids = {}
 
 
 Bot = Client(
-    "Country Info Bot",
+    "CountryInfo",
     bot_token = os.environ["BOT_TOKEN"],
     api_id = int(os.environ["API_ID"]),
     api_hash = os.environ["API_HASH"],
@@ -51,14 +50,18 @@ HELP_TEXT = """**Hey, Follow these steps:**
 /about - For more about me
 /status - For bot status
 
-Made by @LA2IZ"""
+Made by @FayasNoushad"""
 
 ABOUT_TEXT = """--**About Me**-- 😎
 
-🤖 **Name :** [Country Info](https://telegram.me/{})
-📢 **Channel :** [unbelievable](https://telegram.me/llz3z)
+🤖 **Name :** [Country Info Bot](https://telegram.me/{})
+
+👨‍💻 **Developer :** [LA2IZ](https://telegram.me/llZ3z)
+
 📝 **Language :** [Python3](https://python.org)
+
 🧰 **Framework :** [Pyrogram](https://pyrogram.org)
+
 📡 **Server :** [Heroku](https://heroku.com)"""
 
 FORCE_SUBSCRIBE_TEXT = "<code>Sorry Dear You Must Join My Updates Channel for using me 😌😉....</code>"
@@ -170,7 +173,7 @@ Timezone : `{country.timezones()}`
     return info, wiki, google
 
 
-@Bot.on_message(filters.private & filters.text)
+@Bot.on_message(filters.private & filters.text & ~filters.command)
 async def countryinfo(bot, update):
     if not await db.is_user_exist(update.from_user.id):
 	    await db.add_user(update.from_user.id)
@@ -284,8 +287,9 @@ async def countryinfo_inline(bot, update):
     )
 
 
-@Bot.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply, group=4)
+@Bot.on_message(filters.private & filters.command("broadcast") & filters.user(BOT_OWNER) & filters.reply, group=1)
 async def broadcast(bot, update):
+	broadcast_ids = {}
 	all_users = await db.get_all_users()
 	broadcast_msg = update.reply_to_message
 	while True:
