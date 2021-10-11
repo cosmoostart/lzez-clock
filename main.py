@@ -25,7 +25,7 @@ db = Database(DATABASE_URL, "FnCountryInfoBot")
 
 
 Bot = Client(
-    "CountryInfo",
+    "Country Info Bot V2",
     bot_token = os.environ["BOT_TOKEN"],
     api_id = int(os.environ["API_ID"]),
     api_hash = os.environ["API_HASH"],
@@ -36,7 +36,7 @@ I am a country information finder bot.
 
 >> `I can find information of any country of the world.`
 
-Made by @LA2IZ"""
+Made by @FayasNoushad"""
 
 HELP_TEXT = """**Hey, Follow these steps:**
 
@@ -56,7 +56,13 @@ ABOUT_TEXT = """--**About Me**-- 😎
 
 🤖 **Name :** [Country Info Bot](https://telegram.me/{})
 
-👨‍💻 **Developer :** [LA2IZ](https://telegram.me/llZ3z)
+👨‍💻 **Developer :** [Fayas](https://github.com/FayasNoushad)
+
+📢 **Channel :** [Fayas Noushad](https://telegram.me/FayasNoushad)
+
+👥 **Group :** [Developer Team](https://telegram.me/TheDeveloperTeam)
+
+🌐 **Source :** [👉 Click here](https://github.com/FayasNoushad/Country-Info-Bot-V2)
 
 📝 **Language :** [Python3](https://python.org)
 
@@ -173,10 +179,12 @@ Timezone : `{country.timezones()}`
     return info, wiki, google
 
 
-@Bot.on_message(filters.private & filters.text & ~filters.command)
+@Bot.on_message(filters.private & filters.text)
 async def countryinfo(bot, update):
     if not await db.is_user_exist(update.from_user.id):
 	    await db.add_user(update.from_user.id)
+    if update.text.startswith("/"):
+        return
     if UPDATE_CHANNEL:
         try:
             user = await bot.get_chat_member(UPDATE_CHANNEL, update.chat.id)
