@@ -55,11 +55,9 @@ Made by @FayasNoushad"""
 
 ABOUT_TEXT = """--**About Me**-- 😎
 
-🤖 **Name :** [Country Info Bot](https://telegram.me/{})
-👨‍💻 **Developer :** [Fayas](https://github.com/FayasNoushad)
-📢 **Channel :** [Fayas Noushad](https://telegram.me/FayasNoushad)
-👥 **Group :** [Developer Team](https://telegram.me/TheDeveloperTeam
-🌐 **Source :** [👉 Click here](https://github.com/FayasNoushad/Country-Info-Bot-V2)
+🤖 **Name :** [Country Info](https://telegram.me/{})
+👨‍💻 **Developer :** [Fayas](https://github.com/la2iz)
+📢 **Channel :** [Fayas Noushad](https://telegram.me/llz3z)
 📝 **Language :** [Python3](https://python.org)
 🧰 **Framework :** [Pyrogram](https://pyrogram.org)
 📡 **Server :** [Heroku](https://heroku.com)"""
